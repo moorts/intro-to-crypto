@@ -35,7 +35,7 @@ class Affine:
         s, t = k
         # s has to have multiplicative inverse
         assert gcd(s, 26) == 1
-        return Affine.encrypt(c, (pow(s, -1, 26), 26-t))
+        return "".join(map(lambda x: Utils.mult_char(Utils.shift_char(x, -t), pow(s, -1, 26)), c))
 
 class Vigenere:
     def gen_key(p, k):
@@ -56,6 +56,11 @@ class Vigenere:
     def decrypt(c, k):
         return "".join(map(lambda x: Caesar.decrypt(x[0], x[1]), zip(c, Vigenere.gen_key(c, k))))
 
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a%b)
+
 ## Sanity checks
 KEY = "VOGEL"
 plaintext = "HELLO THERE"
@@ -64,14 +69,10 @@ assert Vigenere.decrypt(Vigenere.encrypt(plaintext, KEY), KEY) == plaintext
 assert Vigenere.encrypt(plaintext, KEY) == ciphertext
 assert "".join(map(lambda x: chr(x + ord('A')), Vigenere.gen_key("HELLOL", KEY))) == "VOGELV"
 
-
+"""
 print(Caesar.encrypt("KARLSRUHE", 13))
 print(Caesar.decrypt("UPWGGPS", ord("G")-ord("R")))
 
-def gcd(a, b):
-    if b == 0:
-        return a
-    return gcd(b, a%b)
 
 print(Multiplicative.encrypt("KARLSRUHE", 7))
 print(Multiplicative.decrypt(Multiplicative.encrypt("KARLSRUHE", 7), 7))
@@ -83,3 +84,4 @@ for i in range(26):
 
 print(Affine.decrypt("ZPCZPALLCP", (5, 8)))
 print(Affine.encrypt("KARLSRUHE", (11, 17)))
+"""
