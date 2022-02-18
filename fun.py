@@ -39,10 +39,11 @@ class Affine:
 
 class Vigenere:
     def gen_key(p, k):
-        n = len(p)
+        # Generates key sequence
+        # Yields -1 for non-alphabetic characters
         key = k.upper()
         i, non_alphabetic = 0, 0
-        while i < n:
+        while i < len(p):
             if not ord('A') <= ord(p[i]) <= ord('Z'):
                 yield -1
                 non_alphabetic += 1
