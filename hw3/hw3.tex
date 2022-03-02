@@ -1,0 +1,60 @@
+\documentclass{article}
+
+\begin{document}
+
+\section{Aufgabe 1}
+
+\begin{tabular}{| c | l | l |}
+    \hline
+    Nr. & Rekursion & Polynom \\\hline
+    1 & $s_n = s_{n-3} + s_{n-1}$ & $f(X) = X^3 - X^2 - 1$\\\hline
+    2 & $s_n = s_{n-3} + s_{n-1}$ & $f(X) = X^4 - X^3 - X$\\\hline
+    3 & $s_n = s_{n-5} + s_{n-4} + s_{n-3} + s_{n-1}$ & $f(X) = X^5 - X^4 - X^2 - X - 1$\\\hline
+\end{tabular}
+
+\section{Aufgabe 2}
+
+\begin{enumerate}
+    \item $x^2 + 1 = (x+1)^2$
+    \item $x^3 + 1 = (x+1)(x^2 + x + 1)$
+    \item $x^4 + x^2 + 1 = (x^2 + x + 1)^2$
+\end{enumerate}
+
+\section{Aufgabe 3}
+
+\begin{tabular}{| l | l |}
+    \hline
+    Polynom & Rekursion \\\hline
+    $f(X) = X^5 + X^4 + X^2 + X + 1$ & $s_{n+5} = s_{n+4} + s_{n+2} + s_{n+1} + s_{n}$\\\hline
+    $f(X) = X^5 + X^4 + X^3 + X + 1$ & $s_{n+5} = s_{n+4} + s_{n+3} + s_{n+1} + s_{n}$\\\hline
+\end{tabular}
+
+\section{Aufgabe 4}
+
+Rückkopplungspolynom: $f(X) = X^5 + X + 1 = (X^3 - X^2 + 1)(X^2 + X + 1)$
+
+\section{Aufgabe 6}
+
+\subsection{}
+
+Outputfolge: \textbf{00001 00011}
+
+00001 -> 0: $c_4 = 0$\\
+00010 -> 0: $c_3 = 0$\\
+00100 -> 0: $c_2 = 0$\\
+01000 -> 1: $c_1 = 1$\\
+10001 -> 1: $c_0 + c_4 = 1 \implies c_0 = 1$\\
+
+Schieberegister: $c = 00011$
+
+\subsection{}
+
+110 000 100 000 11: geht nicht\\
+1100 0010 0000 11: geht nicht\\
+11000 01000 0011: geht nicht\\
+110000 100000 11: möglich\\
+
+\subsection{}
+
+0000 -> 1000: unmöglich
+\end{document}
